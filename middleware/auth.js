@@ -21,18 +21,17 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-const varifyTokenAndUser = (req, res, next) =>{
-    verifyToken(req, res, ()=>{
-        if(req.user.id){
-            next();
-        }else{
-            return next(CustomErrorHandler.unAthorized("You are not user"))
-        }
-    })
-
-}
+const varifyTokenAndUser = (req, res, next) => {
+  verifyToken(req, res, () => {
+    if (req.user.id) {
+      next();
+    } else {
+      return next(CustomErrorHandler.unAthorized("You are not user"));
+    }
+  });
+};
 
 module.exports = {
-    varifyTokenAndUser,
-    verifyToken
-}
+  varifyTokenAndUser,
+  verifyToken,
+};
